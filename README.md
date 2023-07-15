@@ -1,21 +1,5 @@
 # NxCordic
 
-**TODO: Add description**
+**NxCordic:** A sample code that returns a matrix of sine and cosine values of a given angle vector with the CORDIC algorithm, written in pure Nx.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `nx_cordic` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:nx_cordic, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/nx_cordic>.
 
