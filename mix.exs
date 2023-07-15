@@ -21,7 +21,8 @@ defmodule NxCordic.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nx, "~> 0.5"}
+      {:nx, "~> 0.5"},
+      {:ex_doc, "~> 0.29", only: :dev, runtime: false}
     ]
   end
 end
