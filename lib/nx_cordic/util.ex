@@ -1,4 +1,5 @@
 defmodule NxCordic.Util do
+
   @moduledoc false
 
   @doc """
@@ -11,10 +12,7 @@ defmodule NxCordic.Util do
       >
   """
   def gen_input(stage) do
-    0..stage
-    |> Enum.map(& &1 * 1.0)
-    |> Nx.tensor()
-    |> Nx.divide(stage)
+    Nx.linspace(0, 1, n: stage + 1)
     |> Nx.multiply(:math.pi())
     |> Nx.multiply(2)
   end
