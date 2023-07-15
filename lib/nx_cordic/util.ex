@@ -1,6 +1,7 @@
 defmodule NxCordic.Util do
-
   @moduledoc false
+
+  import Nx.Defn
 
   @doc """
   ## Examples
@@ -15,5 +16,9 @@ defmodule NxCordic.Util do
     Nx.linspace(0, 1, n: stage + 1)
     |> Nx.multiply(:math.pi())
     |> Nx.multiply(2)
+  end
+
+  defn cos_sin(angles) do
+    {Nx.cos(angles), Nx.sin(angles)}
   end
 end
