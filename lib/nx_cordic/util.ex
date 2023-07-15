@@ -21,4 +21,11 @@ defmodule NxCordic.Util do
   defn cos_sin(angles) do
     {Nx.cos(angles), Nx.sin(angles)}
   end
+
+  defn equals_with_epsilon(t1, t2, epsilon) do
+    Nx.subtract(t1, t2)
+    |> Nx.abs()
+    |> Nx.less_equal(epsilon)
+    |> Nx.all()
+  end
 end
