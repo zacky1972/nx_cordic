@@ -22,17 +22,16 @@ defmodule NxCordic.Util do
     {Nx.cos(angles), Nx.sin(angles)}
   end
 
-  defn equals_with_epsilon(t1, t2, epsilon) do
-    Nx.subtract(t1, t2)
-    |> Nx.abs()
+  defn equals_tuple_with_epsilon(t1, t2, epsilon) do
+    diff_tuple(t1, t2)
     |> Nx.less_equal(epsilon)
     |> Nx.all()
   end
 
-  defn equals_tuple_with_epsilon({t1_1, t1_2}, {t2_1, t2_2}, epsilon) do
-    Nx.subtract(Nx.concatenate([t1_1, t1_2]), Nx.concatenate([t2_1, t2_2]))
+  defn diff_tuple({t1_1, t1_2}, {t2_1, t2_2}) do
+    expected = Nx.concatenate([t1_1, t1_2])
+
+    Nx.subtract(expected, Nx.concatenate([t2_1, t2_2]))
     |> Nx.abs()
-    |> Nx.less_equal(epsilon)
-    |> Nx.all()
   end
 end
