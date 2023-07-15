@@ -8,21 +8,21 @@ defmodule NxCordic do
   @bit_size 32
   @max Bitwise.bsl(1, @bit_size - 1)
 
-  @k_value  0..31
-            |> Enum.map(& 2 ** (-2 * &1))
-            |> Enum.map(& :math.sqrt(1 + &1))
-            |> Enum.map(& 1.0 / &1)
-            |> Enum.reduce(fn x, acc -> x * acc end)
-            |> Kernel.*(@max)
-            |> floor()
+  @k_value 0..31
+           |> Enum.map(&(2 ** (-2 * &1)))
+           |> Enum.map(&:math.sqrt(1 + &1))
+           |> Enum.map(&(1.0 / &1))
+           |> Enum.reduce(fn x, acc -> x * acc end)
+           |> Kernel.*(@max)
+           |> floor()
 
   @angles 0..31
-          |> Enum.map(& 2 ** -&1)
-          |> Enum.map(& :math.atan/1)
-          |> Enum.map(& &1 / :math.pi())
-          |> Enum.map(& &1 * @max)
-          |> Enum.map(& floor(&1))
-          |> Enum.reject(& &1 == 0)
+          |> Enum.map(&(2 ** -&1))
+          |> Enum.map(&:math.atan/1)
+          |> Enum.map(&(&1 / :math.pi()))
+          |> Enum.map(&(&1 * @max))
+          |> Enum.map(&floor(&1))
+          |> Enum.reject(&(&1 == 0))
           |> List.to_tuple()
 
   @pi Nx.Constants.pi()
