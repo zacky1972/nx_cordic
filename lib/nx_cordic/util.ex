@@ -28,4 +28,9 @@ defmodule NxCordic.Util do
     |> Nx.less_equal(epsilon)
     |> Nx.all()
   end
+
+  defn equals_tuple_with_epsilon({t1_1, t1_2}, {t2_1, t2_2}, epsilon) do
+    Nx.concatenate([equals_with_epsilon(t1_1, t2_1, epsilon), equals_with_epsilon(t1_2, t2_2, epsilon)])
+    |> Nx.all()
+  end
 end
