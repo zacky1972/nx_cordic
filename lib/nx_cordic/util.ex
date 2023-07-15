@@ -6,15 +6,17 @@ defmodule NxCordic.Util do
   @doc """
   ## Examples
 
-      iex> NxCordic.Util.gen_input(8)
+      iex> NxCordic.Util.gen_input(n: 9)
       #Nx.Tensor<
         f32[9]
         [0.0, 0.7853981852531433, 1.5707963705062866, 2.356194496154785, 3.1415927410125732, 3.9269909858703613, 4.71238899230957, 5.4977874755859375, 6.2831854820251465]
       >
   """
-  def gen_input(stage) do
-    Nx.linspace(0, 1, n: stage + 1)
-    |> Nx.multiply(:math.pi())
+  defn gen_input(opts \\ []) do
+    n = opts[:n]
+
+    Nx.linspace(0, 1, n: n)
+    |> Nx.multiply(Nx.Constants.pi())
     |> Nx.multiply(2)
   end
 

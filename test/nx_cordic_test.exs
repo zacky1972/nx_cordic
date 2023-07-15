@@ -3,7 +3,7 @@ defmodule NxCordicTest do
   doctest NxCordic
 
   test "cos_sin" do
-    input = NxCordic.Util.gen_input(256)
+    input = NxCordic.Util.gen_input(n: 256 + 1)
 
     assert NxCordic.Util.equals_tuple_with_epsilon(
              NxCordic.cos_sin(input),

@@ -1,7 +1,7 @@
 inputs =
   0..3
   |> Enum.map(&(16 * 4 ** &1))
-  |> Enum.map(&{"size = #{&1}", NxCordic.Util.gen_input(&1)})
+  |> Enum.map(&{"size = #{&1}", NxCordic.Util.gen_input(n: &1 + 1)})
   |> Map.new()
 
 sin_jit = EXLA.jit(&Nx.sin/1)
