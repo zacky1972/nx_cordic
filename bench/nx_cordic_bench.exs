@@ -24,13 +24,18 @@ benchee =
     %{
       "Nx sin" => fn {input, _} -> Nx.sin(input) end,
       "EXLA CPU sin" => fn {input, _} -> sin_jit.(input) end,
-      "EXLA GPU sin" => {fn {_, input} -> cuda_sin_jit.(input) end, after_each: &Nx.backend_deallocate/1},
+      "EXLA GPU sin" =>
+        {fn {_, input} -> cuda_sin_jit.(input) end, after_each: &Nx.backend_deallocate/1},
       "Nx cos_sin" => fn {input, _} -> NxCordic.Util.cos_sin(input) end,
       "EXLA CPU cos_sin" => fn {input, _} -> util_cos_sin_jit.(input) end,
-      "EXLA GPU cos_sin" => {fn {_, input} -> cuda_until_cos_sin_jit.(input) end, after_each: &Nx.backend_deallocate/1},
+      "EXLA GPU cos_sin" =>
+        {fn {_, input} -> cuda_until_cos_sin_jit.(input) end,
+         after_each: &Nx.backend_deallocate/1},
       "Nx CORDIC" => fn {input, _} -> NxCordic.cos_sin(input) end,
       "EXLA CPU CORDIC" => fn {input, _} -> cordic_cos_sin_jit.(input) end,
-      "EXLA GPU CORDIC" => {fn {_, input} -> cuda_cordic_cos_sin_jit.(input) end, after_each: &Nx.backend_deallocate/1}
+      "EXLA GPU CORDIC" =>
+        {fn {_, input} -> cuda_cordic_cos_sin_jit.(input) end,
+         after_each: &Nx.backend_deallocate/1}
     }
   else
     %{
